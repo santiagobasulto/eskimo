@@ -14,7 +14,7 @@ var publicDir = path.join(assetsDir, 'public');
 var templatesDir = path.join(assetsDir, 'emails');
 var viewsDir = path.join(appDir, 'views');
 
-var maxAge = 24 * 60 * 60 * 1000;
+var maxAge = 365 * 24 * 60 * 60;
 
 exports = module.exports = function() {
 

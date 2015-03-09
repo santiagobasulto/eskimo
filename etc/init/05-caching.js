@@ -15,13 +15,11 @@ exports = module.exports = function(IoC, settings) {
     // Enable cache if NOT an XHR (AJAX) request
     app.use(function(req, res, next) {
       if (req.xhr) return next();
-      res.setHeader('Cache-Control', 'public');
-      res.setHeader('Pragma', '');
-      res.setHeader('Expires', settings.staticServer.maxAge);
+      res.setHeader('Expires', new Date(Date.now() + (settings.staticServer.maxAge * 1000)).toUTCString());
+      res.setHeader('Cache-Control', "public, max-age=" + settings.staticServer.maxAge);
       next();
     });
   }
-
 };
 
 exports['@require'] = [ '$container', 'igloo/settings' ];
